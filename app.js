@@ -1,7 +1,7 @@
 var express = require('express'),
       path = require('path'),
       app = express(),
-      port = 3000,
+      port = process.env.PORT || 3000,
       router = express.Router();
 
 router.get('/', function(req, res, next){
@@ -11,6 +11,6 @@ router.get('/', function(req, res, next){
 // Set Static Folder
 app.use(express.static(path.join(__dirname, 'src')));
 
-app.listen(3000, function() {
+app.listen(port, function() {
     console.log(`Listening on port ${port}`)
 });
