@@ -1,0 +1,22 @@
+{
+  "name": "meme-house",
+  "version": "1.0.0",
+  "description": "A small meme generator web app.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zendra1994/meme-house.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zendra1994/meme-house/issues"
+  },
+  "homepage": "https://github.com/zendra1994/meme-house#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
