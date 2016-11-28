@@ -1,4 +1,4 @@
-const express = require('express'),
+var express = require('express'),
       path = require('path'),
       app = express(),
       port = 3000,
@@ -11,6 +11,6 @@ router.get('/', function(req, res, next){
 // Set Static Folder
 app.use(express.static(path.join(__dirname, 'src')));
 
-app.listen(3000, () => {
+app.listen(3000, function() {
     console.log(`Listening on port ${port}`)
 });
