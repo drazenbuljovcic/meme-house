@@ -1,16 +1,27 @@
 const express = require('express'),
-      path = require('path'),
       app = express(),
+      path = require('path'),
       port = process.env.PORT || 3000,
-      router = express.Router();
+      router = express.Router(),
+      mongojs = require('mongojs'),
+      db = mongojs('mongodb://meme-center:meme-center@ds113958.mlab.com:13958/heroku_7wxw8zdk');
 
-router.get('/', (req, res, next) => {
-    res.sendFile(path.join(__dirname + 'src/index.html'));
+app.get('/users', (req, res, next) => {
+    console.log('Get users');
+    db.users.find((err, users) => {
+        if(err) res.send(err)
+        
+        res.json(users);
+    })
+});
+
+app.get('/', (req, res, next) => {
+    res.sendFile(path.join(__dirname + '/src/index.html'));
 });
 
 // Set Static Folder
 app.use(express.static(path.join(__dirname, 'src')));
 
 app.listen(port, () => {
-    console.log(`Listening on port ${port}`)
+    console.log(`Listening on port ${port}`);
 });
