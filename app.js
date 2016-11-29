@@ -19,6 +19,10 @@ app.get('/login', (req, res, next) => {
     res.sendFile(path.join(__dirname + '/dist/index.html'));
 });
 
+app.get('/signup', (req, res, next) => {
+    res.sendFile(path.join(__dirname + '/dist/index.html'));
+});
+
 // Set Static Folder
 app.use(express.static(path.join(__dirname, '/dist')));
 
