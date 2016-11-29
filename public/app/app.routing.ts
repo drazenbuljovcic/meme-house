@@ -1,7 +1,7 @@
-import { Routes, RouterModule } from "@angular/router";
+import { Routes, RouterModule }     from "@angular/router";
 
-import { LoginComponent } from './components/login/login.component';
-import { SignupComponent } from './components/signup/signup.component';
+import { LoginComponent }           from './components/login/login.component';
+import { SignupComponent }          from './components/signup/signup.component';
 
 const APP_ROUTES: Routes = [
   {

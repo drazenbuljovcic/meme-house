@@ -11,8 +11,8 @@ import 'zone.js/dist/zone';
 import '../styles/main.scss';
 
 // Angular2 bootstrap
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { platformBrowserDynamic }   from '@angular/platform-browser-dynamic';
 
-import { AppModule } from './app.module';
+import { AppModule }                from './app.module';
 
 const platform = platformBrowserDynamic().bootstrapModule(AppModule);
