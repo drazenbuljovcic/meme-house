@@ -10,7 +10,10 @@ module.exports = {
     filename: 'app.bundle.js'
   },
   devtool: 'source-map',
-  devServer: { inline: true },
+  devServer: { 
+    inline: true,
+    historyApiFallback: true
+  },
   module: {
     loaders: [
       { 
