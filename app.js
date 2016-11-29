@@ -6,7 +6,8 @@ const express = require('express'),
       mongojs = require('mongojs'),
       db = mongojs('mongodb://meme-center:meme-center@ds113958.mlab.com:13958/heroku_7wxw8zdk');
 
-app.get('/users', (req, res, next) => {
+// API
+app.get('/api/users', (req, res, next) => {
     console.log('Get users');
     db.users.find((err, users) => {
         if(err) res.send(err)
