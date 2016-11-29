@@ -16,11 +16,11 @@ app.get('/users', (req, res, next) => {
 });
 
 app.get('/', (req, res, next) => {
-    res.sendFile(path.join(__dirname + '/src/index.html'));
+    res.sendFile(path.join(__dirname + '/dist/index.html'));
 });
 
 // Set Static Folder
-app.use(express.static(path.join(__dirname, 'src')));
+app.use(express.static(path.join(__dirname, 'dist')));
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
