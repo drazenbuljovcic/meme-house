@@ -4,6 +4,7 @@
   "description": "A small meme generator web service.",
   "main": "app.js",
   "scripts": {
+    "postinstall": "cd public && npm install && npm run build:p && cd ../",
     "start": "node app.js",
     "local": "cd public && npm run build:p && cd ../ && nodemon"
   },
