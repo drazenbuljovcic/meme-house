@@ -4,8 +4,8 @@
   "description": "A small meme generator web service.",
   "main": "app.js",
   "scripts": {
-    "start": "cd public && npm i && npm run build:p && cd ../ && node app.js",
-    "local": "cd public && npm run build && cd ../ && nodemon"
+    "start": "node app.js",
+    "local": "cd public && npm run build:p && cd ../ && nodemon"
   },
   "repository": {
     "type": "git",
