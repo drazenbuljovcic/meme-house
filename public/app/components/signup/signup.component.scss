@@ -1,7 +1,16 @@
-.mediumText {
-	margin: 20 0 0 0;
-	font-family: Helvetica;
+.sign-up-title::before {
+  font-family: FontAwesome;
+  content: '\f090';
+  padding-right: 25px;
 }
-body {
-	padding-top:80px;
+form.row {
+  &::nth-child(2) {
+    display: flex;
+    > div.input-field {
+      flex:1;
+    }
+    > button {
+      flex:1;
+    }
+  }
 }

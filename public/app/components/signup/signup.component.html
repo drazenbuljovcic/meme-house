@@ -1,18 +1,17 @@
-<div class="container">
-    <h1><span class="fa fa-sign-in"></span> Signup</h1>
-    <form>
-        <div class="form-group">
-            <label>Email</label>
-            <input type="text" class="form-control" name="email">
-        </div>
-        <div class="form-group">
-            <label>Password</label>
-            <input type="password" class="form-control" name="password">
-        </div>
-        <button type="submit" class="waves-effect waves-light btn-large">Signup</button>
-    </form>
-   <hr>
-   <a href="/login">Login</a>
-   <hr>
-   <a href="/">home</a>
-</div>
+<h1 class="sign-up-title">Signup</h1>
+<form class="row"> 
+    <div class="input-field col s12">
+      <input id="signup-email" type="email" class="validate">
+      <label for="signup-email">Email</label>
+    </div>
+    <div class="col s12">
+      <div class="input-field">
+        <input id="signup-password" type="password" class="validate">
+        <label for="signup-password">Password</label>
+      </div>
+
+      <button class="btn waves-effect waves-light grey darken-1" type="submit" name="action">Submit
+        <i class="material-icons right">send</i>
+      </button>
+    </div>
+</form>

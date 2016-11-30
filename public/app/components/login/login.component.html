@@ -1,7 +1,17 @@
-<h2>Log in</h2>
-<hr />
-<form>
-  <input type="text" name="username" />
-  <input type="text" name="password" />
-  <input type="submit" value="Log in">
+<h1 class="log-in-title">Login</h1>
+<form class="row"> 
+    <div class="input-field col s12">
+      <input id="login-email" type="email" class="validate">
+      <label for="login-email">Email</label>
+    </div>
+    <div class="col s12">
+      <div class="input-field">
+        <input id="login-password" type="password" class="validate">
+        <label for="login-password">Password</label>
+      </div>
+
+      <button class="btn waves-effect waves-light grey darken-1" type="submit" name="action">Login
+        <i class="material-icons right">send</i>
+      </button>
+    </div>
 </form>
