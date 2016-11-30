@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "local": "cd public && npm run build:p && cd ../ && nodemon"
+    "local": "cd public && npm run build && cd ../ && nodemon",
+    "prod": "cd public && npm run build:p && cd ../ && node app.js"
   },
   "repository": {
     "type": "git",
