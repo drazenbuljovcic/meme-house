@@ -1,19 +1,44 @@
 <h1 class="sign-up-title">Signup</h1>
-<!-- Pogledaj login html za komentar na ovo. -->
-
-<form class="row" action="api/signup" method="post"> 
+<form class="row" 
+      [formGroup]="signupForm"      
+      (submit)="signup(signupForm.value)"> 
     <div class="input-field col s12">
-      <input id="signup-email" type="email" class="validate" name="email">
+      <input id="signup-email"
+             type="email"
+             name="email"
+             class="validate"
+             [formControl]="signupForm.controls['email']"
+             [ngClass]="{ 'has-error': !signupForm.controls['email'].valid 
+                                       && signupForm.controls['email'].touched }" />
       <label for="signup-email">Email</label>
+      <div *ngIf="signupForm.controls['email'].hasError('required')
+                  && signupForm.controls['email'].touched"
+           class="alert alert-danger">
+           You must provide an email.
+      </div>
     </div>
     <div class="col s12">
       <div class="input-field">
-        <input id="signup-password" type="password" class="validate" name="password">
+        <input id="signup-password"
+               type="password"
+               class="validate"
+               name="password"
+               [formControl]="signupForm.controls['password']"
+               [ngClass]="{ 'has-error': !signupForm.controls['password'].valid 
+                                         && signupForm.controls['password'].touched }" />
         <label for="signup-password">Password</label>
+        <div *ngIf="signupForm.controls['password'].hasError('required')
+                    && signupForm.controls['password'].touched"
+           class="alert alert-danger">
+           You must provide a password.
+        </div>
       </div>
 
-      <button class="btn waves-effect waves-light grey darken-1" type="submit" name="action">Submit
-        <i class="material-icons right">send</i>
+      <button class="btn waves-effect waves-light grey darken-1"
+              type="submit"
+              name="action"
+              [disabled]="!signupForm.valid">
+              Submit<i class="material-icons right">send</i>
       </button>
     </div>
 </form>

@@ -1,22 +1,31 @@
 import { Injectable }   from '@angular/core';
+
 import { Http,
          Response,
          Request,
          Headers,
-         RequestMethod } from '@angular/http';
+         RequestMethod,
+         RequestOptions } from '@angular/http';
+
 import 'rxjs/Rx';
 
 @Injectable()
 export class UserService {
+  headers: Headers;
+  options: RequestOptions;
+  
   constructor(
     private http: Http
   ) {
+    this.headers = new Headers({ 'Content-Type': 'application/json' });
+    this.options = new RequestOptions({ headers: this.headers });
   }
 
   Login(data) {
-    console.log(data);
-    this.http.post('api/login', 
-                   JSON.stringify(data),
-                   );
+    return this.http.post('api/login', data, this.options);
+  }
+
+  Signup(data) {
+    return this.http.post('api/signup', data, this.options);
   }
 }

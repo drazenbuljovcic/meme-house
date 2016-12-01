@@ -1,8 +1,8 @@
 <h1 class="log-in-title">Login</h1>
 
 <form class="row" 
-      [formGroup]="loginForm"
-      (submit)="login(loginForm.value)"> 
+      [formGroup]="loginForm"      
+      (submit)="login(loginForm.value)">
     <div class="input-field col s12">
       <input id="login-email"
              type="email"
@@ -37,7 +37,7 @@
 
       <button class="btn waves-effect waves-light grey darken-1"
               type="submit"
-              name="action"
+              name="login"
               [disabled]="!loginForm.valid">
               Login<i class="material-icons right">send</i>
       </button>

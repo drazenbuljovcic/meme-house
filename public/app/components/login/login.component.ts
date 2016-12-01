@@ -26,6 +26,6 @@ export class LoginComponent {
   }
 
   login(data: any) {
-    this.userService.Login(data);
+    this.userService.Login(data).subscribe();
   }
 }
