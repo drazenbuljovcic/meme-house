@@ -7,6 +7,7 @@ import { HeaderComponent }           from './components/header/header.component'
 
 import { LoginComponent }            from './components/login/login.component';
 import { SignupComponent }           from './components/signup/signup.component';
+import { ProfileComponent }          from './components/profile/profile.component';
 
 import { routing }                   from './app.routing';
 
@@ -16,7 +17,8 @@ import { routing }                   from './app.routing';
   declarations: [ AppComponent,
                   HeaderComponent,
                   LoginComponent,
-                  SignupComponent ],
+                  SignupComponent,
+                  ProfileComponent ],
   providers:    [ ],
   bootstrap:    [ AppComponent ]
 })

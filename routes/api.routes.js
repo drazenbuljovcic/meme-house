@@ -2,11 +2,6 @@ const path = require('path');
 
 module.exports = function(app, passport) {
 
-    // PROFILE SECTION
-    app.get('/profile', isLoggedIn, function(req, res) {
-    	console.log('Signed up!');
-    });
-
     // LOGOUT ==============================
     app.get('/logout', function(req, res) {
     	req.logout();
@@ -15,13 +10,13 @@ module.exports = function(app, passport) {
 
     // LOGIN
 	app.post('/login', passport.authenticate('local-login', {
-        successRedirect : '/profile/yes', 
+        successRedirect : '/profile/', 
         failureRedirect : '/signup', 
         failureFlash : true 
     }));
 	// SIGNUP 
     app.post('/signup', passport.authenticate('local-signup', {
-	    successRedirect : '/profile/yes', 
+	    successRedirect : '/profile/', 
         failureRedirect : '/signup', 
 		failureFlash : true 
     }));

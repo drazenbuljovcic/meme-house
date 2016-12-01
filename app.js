@@ -37,10 +37,23 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 // routes ======================================================================
 require('./routes/api.routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
+// route middleware to ensure user is logged in
+function isLoggedIn(req, res, next) {
+	if (req.isAuthenticated())
+		return next();
+
+	res.redirect('/');
+}
+
+
 app.get('/signup', function(req, res) {
     res.sendFile(path.join(__dirname + '/dist/index.html'));   
 });
 app.get('/login', function(req, res) {
+    res.sendFile(path.join(__dirname + '/dist/index.html'));
+});
+// PROFILE SECTION
+app.get('/profile', isLoggedIn, function(req, res) {
     res.sendFile(path.join(__dirname + '/dist/index.html'));
 });
 // launch ======================================================================
