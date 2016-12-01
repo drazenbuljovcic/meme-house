@@ -12,7 +12,6 @@ const express = require('express'),
       // API = require('./api.routes')
 
 // API
-// app.use('/api', API);
 var configDB = require('./config/database.js');
 
 mongoose.connect(configDB.url); // connect to our database
@@ -36,8 +35,14 @@ app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
 // routes ======================================================================
-require('./api.routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
+require('./routes/api.routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
+app.get('/signup', function(req, res) {
+    res.sendFile(path.join(__dirname + '/dist/index.html'));   
+});
+app.get('/login', function(req, res) {
+    res.sendFile(path.join(__dirname + '/dist/index.html'));
+});
 // launch ======================================================================
 app.listen(port);
 console.log('The magic happens on port ' + port);

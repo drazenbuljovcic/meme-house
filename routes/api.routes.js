@@ -13,13 +13,6 @@ module.exports = function(app, passport) {
     	res.redirect('/');
     });
 
-    app.get('/signup', function(req, res) {
-    	res.sendFile(path.join(__dirname + '/dist/index.html'));   
-    });
-    app.get('/login', function(req, res) {
-    	res.sendFile(path.join(__dirname + '/dist/index.html'));
-    });
-
     // LOGIN
 	app.post('/login', passport.authenticate('local-login', {
         successRedirect : '/profile/yes', 
