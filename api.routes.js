@@ -1,36 +1,43 @@
-const express = require('express'),
-      router = express.Router(),
-      passport = require('passport'),
-      mongoose = require('mongoose');
+const path = require('path');
 
-mongoose.connect('mongodb://meme-center:meme-center@ds113958.mlab.com:13958/heroku_7wxw8zdk');
+module.exports = function(app, passport) {
 
-require('./config/passport')(passport);
+    // PROFILE SECTION
+    app.get('/profile', isLoggedIn, function(req, res) {
+    	console.log('Signed up!');
+    });
 
-router.get('/users', (req, res, next) => {
-    console.log('Get users');
-    // db.users.find((err, users) => {
-    //     if(err) res.send(err)
-        
-    //     res.json(users);
-    // });
-});
+    // LOGOUT ==============================
+    app.get('/logout', function(req, res) {
+    	req.logout();
+    	res.redirect('/');
+    });
 
-router.post('/signup', passport.authenticate('local-signup', {
-        successRedirect : '/success/', 
-        failureRedirect : '/failes/signup', // redirect back to the signup page if there is an error
-        failureFlash : false // allow flash messages 
+    app.get('/signup', function(req, res) {
+    	res.sendFile(path.join(__dirname + '/dist/index.html'));   
+    });
+    app.get('/login', function(req, res) {
+    	res.sendFile(path.join(__dirname + '/dist/index.html'));
+    });
+
+    // LOGIN
+	app.post('/login', passport.authenticate('local-login', {
+        successRedirect : '/profile/yes', 
+        failureRedirect : '/signup', 
+        failureFlash : true 
     }));
+	// SIGNUP 
+    app.post('/signup', passport.authenticate('local-signup', {
+	    successRedirect : '/profile/yes', 
+        failureRedirect : '/signup', 
+		failureFlash : true 
+    }));
+}
 
-module.exports = router;
-
-// route middleware to make sure a user is logged in
+// route middleware to ensure user is logged in
 function isLoggedIn(req, res, next) {
+	if (req.isAuthenticated())
+		return next();
 
-    // if user is authenticated in the session, carry on 
-    if (req.isAuthenticated())
-        return next();
-
-    // if they aren't redirect them to the home page
-    res.redirect('/');
+	res.redirect('/');
 }

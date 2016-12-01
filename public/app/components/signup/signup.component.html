@@ -1,12 +1,14 @@
 <h1 class="sign-up-title">Signup</h1>
-<form class="row"> 
+<!-- Pogledaj login html za komentar na ovo. -->
+
+<form class="row" action="/signup" method="post"> 
     <div class="input-field col s12">
-      <input id="signup-email" type="email" class="validate">
+      <input id="signup-email" type="email" class="validate" name="email">
       <label for="signup-email">Email</label>
     </div>
     <div class="col s12">
       <div class="input-field">
-        <input id="signup-password" type="password" class="validate">
+        <input id="signup-password" type="password" class="validate" name="password">
         <label for="signup-password">Password</label>
       </div>
 
