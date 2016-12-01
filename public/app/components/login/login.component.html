@@ -1,20 +1,45 @@
 <h1 class="log-in-title">Login</h1>
-<!-- Znam da ne treba ovako, ali postman sere, i nije mi jasno zašto ne mogu preko njega, a mogu ovako... probao sam ovako reko aj da probam, kad ono puf. rešićemo kasnije, ali bitno da radi za sada nekako barem.
-video sam kako ručno implementovati sve ovo uvezi passporta, tako da ćemo imati custom implementaciju, a ne ovo direkt sa dokumentacije. Sutra rešavam to 200% a odradićemo zajedno deo da je tipa signup/login hidden ako si ulogovan. Jer ja znam passport deo toga a ti frontend. -->
 
-<form class="row" action="/login" method="post"> 
+<form class="row" 
+      [formGroup]="loginForm"
+      (submit)="login(loginForm.value)"> 
     <div class="input-field col s12">
-      <input id="login-email" type="email" class="validate" name="email">
+      <input id="login-email"
+             type="email"
+             name="email"
+             class="validate"
+             [formControl]="loginForm.controls['email']"
+             [ngClass]="{ 'has-error': !loginForm.controls['email'].valid 
+                                       && loginForm.controls['email'].touched }" />
       <label for="login-email">Email</label>
+      <div *ngIf="loginForm.controls['email'].hasError('required')
+                  && loginForm.controls['email'].touched"
+           class="alert alert-danger">
+           You must provide an email.
+      </div>
     </div>
     <div class="col s12">
       <div class="input-field">
-        <input id="login-password" type="password" class="validate" name="password">
+        <input id="login-password"
+               type="password"
+               class="validate"
+               name="password"
+               [formControl]="loginForm.controls['password']"
+               [ngClass]="{ 'has-error': !loginForm.controls['password'].valid 
+                                         && loginForm.controls['password'].touched }" />
         <label for="login-password">Password</label>
+        <div *ngIf="loginForm.controls['password'].hasError('required')
+                  && loginForm.controls['password'].touched"
+           class="alert alert-danger">
+           You must provide a password.
+        </div>
       </div>
 
-      <button class="btn waves-effect waves-light grey darken-1" type="submit" name="action">Login
-        <i class="material-icons right">send</i>
+      <button class="btn waves-effect waves-light grey darken-1"
+              type="submit"
+              name="action"
+              [disabled]="!loginForm.valid">
+              Login<i class="material-icons right">send</i>
       </button>
     </div>
 </form>
