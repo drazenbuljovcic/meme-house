@@ -10,18 +10,15 @@ module.exports = function(app, passport) {
     });
 
     // LOGIN
-    
     app.post('/api/login', passport.authenticate('local-login'),
         function(req, res) {
             res.json(req.user);
-        });
-	// SIGNUP 
+    });
 
+	// SIGNUP 
     app.post('/api/signup', passport.authenticate('local-signup'), 
         function(req, res) {
-            User.findOne({'email': 'djole123@gmail.com'}, function(err, user){
-                res.json(user);
-            });
+            res.json(req.user);
     });
 
     //Get user
