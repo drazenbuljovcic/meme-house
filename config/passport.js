@@ -19,6 +19,7 @@ module.exports = function(passport) {
     // =========================================================================
     // LOCAL LOGIN =============================================================
     // =========================================================================
+    console.log('Outside login');
     passport.use('local-login', new LocalStrategy({
         // by default, local strategy uses username and password, we will override with email
         usernameField : 'email',
@@ -28,24 +29,36 @@ module.exports = function(passport) {
     function(req, email, password, done) {
         if (email)
             email = email.toLowerCase(); // Use lower-case e-mails to avoid case-sensitive e-mail matching
-
         // asynchronous
         process.nextTick(function() {
+            console.log('Weird login');
             User.findOne({ 'email' :  email }, function(err, user) {
                 // if there are any errors, return the error
                 if (err)
+                    console.log(err);
+                    console.log('error')
+                    
                     return done(err);
-
+                    console.log('No error')
                 // if no user is found, return the message
                 if (!user)
                     return done(null, false, req.flash('loginMessage', 'No user found.'));
-
-                if (!user.validPassword(password))
+                console.log('No User')
+                if (!user.validPassword(password)) {
+                    console.log('Invalid')
                     return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));
-
-                // all is well, return user
-                else
+                } else {
+                    // all is well, return user
+                    console.log('All good.')
                     return done(null, user);
+                }
+
+                    
+
+                
+
+
+                    
             });
         });
 
@@ -54,6 +67,7 @@ module.exports = function(passport) {
     // =========================================================================
     // LOCAL SIGNUP ============================================================
     // =========================================================================
+    
     passport.use('local-signup', new LocalStrategy({
         // by default, local strategy uses username and password, we will override with email
         usernameField : 'email',
@@ -95,6 +109,7 @@ module.exports = function(passport) {
                 });
             // if the user is logged in but has no local account...
             } else if ( !req.user.email ) {
+                
                 // ...presumably they're trying to connect a local account
                 // BUT let's check if the email used to connect a local account is being used by another user
                 User.findOne({ 'email' :  email }, function(err, user) {

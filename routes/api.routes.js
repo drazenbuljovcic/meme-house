@@ -10,7 +10,7 @@ var upload = multer({ dest: 'uploads/' })
 
 module.exports = (app, passport) => {
 
-    // LOGOUT ==============================
+    // LOGOUT 
     app.get('/api/logout', (req, res) => {
     	req.logout();
     	res.redirect('/');
@@ -28,11 +28,24 @@ module.exports = (app, passport) => {
             res.json(req.user);
         });
 
-    //Get user
+    //Get user by id
     app.get('/api/user/:userid', (req,res) => {
         User.findById(req.params.userid, (err, user) => {
             res.json(user);
         });
+    });
+    //Delete user by id
+    app.delete('/api/user/:userid',(req, res) => {
+        User.findByIdAndRemove(req.params.userid, (err, results)=> {
+            if (err) {
+                res.json({"error":err})
+            } if (results)  {
+                res.json({"Deleted user":results})
+            } else {
+               res.json({"status":"User doesn't exist."});
+
+            }
+        })        
     });
     //Get all users
     app.get('/api/users',(req, res) => {
@@ -56,6 +69,28 @@ module.exports = (app, passport) => {
         })
     });
 
+    //Delete Post by id
+    app.delete('/api/posts/:post_id',(req, res) => {
+        let id = req.params.post_id;
+        Post.findById(id, (err,post) => {
+            if (err) {
+                console.log(err);
+                res.json({"error":err});
+                return
+            }
+            Post.remove( {_id:id},(err) => {
+                if (err) {
+                    //error
+                    res.json({"success":"false"});
+                    return
+                } else {
+                    //Success
+                    res.json({"success":"true"});
+                }
+            })
+        });
+    });
+
     //Create a post 
     app.post('/api/upload_post',upload.single('post_image'),(req,res) => {
 
@@ -69,20 +104,20 @@ module.exports = (app, passport) => {
          var postimage = new PostImage();
          postimage.img.data = fs.readFileSync(req.file.path);
          postimage.img.contentType = 'image/png';
-         
          postimage.save((err, a) => {
             if (err) throw err;
             post.image_url = postimage._id
-
             post.save( (err) => {
                 if (err) 
                     return 
+                upload.re
                 res.json(post);
 
             })
         })
-
      })
+        
+    
 
     //Get a single post image
     app.get('/api/uploads/:post_id', (req,res) => {
