@@ -6,7 +6,8 @@ var postSchema = mongoose.Schema({
         description  : String,
         votes 		 : Number,
         views		 : Number,
-        Saved		 : Boolean
+        Saved		 : Boolean,
+        image_url 	 : String,
 });
 
 

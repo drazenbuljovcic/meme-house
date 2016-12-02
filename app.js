@@ -23,6 +23,7 @@ app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.json()); // get information from html forms
 app.use(bodyParser.urlencoded({ extended: true }));
+
 // required for passport
 app.use(session({
     secret: 'SomethingAwesome', // session secret
@@ -45,10 +46,10 @@ function isLoggedIn(req, res, next) {
 }
 
 
-app.get('/signup', function(req, res) {
+app.get('/signup', (req, res) => {
     res.sendFile(path.join(__dirname + '/dist/index.html'));   
 });
-app.get('/login', function(req, res) {
+app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname + '/dist/index.html'));
 });
 // PROFILE SECTION
