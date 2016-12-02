@@ -24,7 +24,7 @@ module.exports = (app, passport) => {
 
 	// SIGNUP 
     app.post('/api/signup', passport.authenticate('local-signup'), 
-        (req, res) =>{
+        (req, res) => {
             res.json(req.user);
         });
 
@@ -44,6 +44,8 @@ module.exports = (app, passport) => {
             res.send(userMap);  
         })
     });
+
+    //Get all posts
     app.get('/api/posts',(req, res) => {
         Post.find({}, (err, posts) => {
             var postsMap = {};
@@ -53,10 +55,9 @@ module.exports = (app, passport) => {
             res.send(postsMap);  
         })
     });
+
     //Create a post 
     app.post('/api/upload_post',upload.single('post_image'),(req,res) => {
-
-        // res.json(req.file);
 
         let body = req.body;
         var post = new Post();
@@ -69,9 +70,10 @@ module.exports = (app, passport) => {
          postimage.img.data = fs.readFileSync(req.file.path);
          postimage.img.contentType = 'image/png';
          
-         postimage.save(function (err, a) {
+         postimage.save((err, a) => {
             if (err) throw err;
             post.image_url = postimage._id
+
             post.save( (err) => {
                 if (err) 
                     return 
@@ -81,6 +83,8 @@ module.exports = (app, passport) => {
         })
 
      })
+
+    //Get a single post image
     app.get('/api/uploads/:post_id', (req,res) => {
         PostImage.findById(req.params.post_id, (err, doc) => {
             if (err) return 
