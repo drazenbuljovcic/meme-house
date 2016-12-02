@@ -33,6 +33,10 @@ export class UserService {
     return window.sessionStorage.getItem('_id') ? true : false;
   }
 
+  checkIfkeepUserLoggedInIsSet() {
+    return window.localStorage.getItem('_id') ? true : false;
+  }
+  
   logoutUser() {
     if(window.sessionStorage.getItem('_id')){
       window.sessionStorage.removeItem('_id');
@@ -41,12 +45,13 @@ export class UserService {
   }
 
   Login(data) {
-    return this.http.post('api/login', data, this.options)
-                    .map(res => res.json())
-                    .subscribe((data) => {
-                      window.sessionStorage.setItem('_id', data._id);
-                      this.router.navigate([`/profile/${window.sessionStorage.getItem('_id')}`]);
-                    });
+    console.log(data);
+    // return this.http.post('api/login', data, this.options)
+    //                 .map(res => res.json())
+    //                 .subscribe((data) => {
+    //                   window.sessionStorage.setItem('_id', data._id);
+    //                   this.router.navigate([`/profile/${window.sessionStorage.getItem('_id')}`]);
+    //                 });
   }
 
   Signup(data) {
