@@ -25,7 +25,11 @@ export class LoginComponent {
     })
   }
 
+  ngOnInit() {
+    this.userService.redirectIfUserIsLoggedIn();
+  }
+  
   login(data: any) {
-    this.userService.Login(data).subscribe();
+    this.userService.Login(data)
   }
 }
