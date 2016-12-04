@@ -22,9 +22,6 @@ const APP_ROUTES: Routes = [
   	path: 'profile/:id',
     component: ProfileComponent,
     pathMatch: 'full'
-    // children: [
-    //   { path: ':id',  },
-    // ]
   }
 ];
 

@@ -24,8 +24,7 @@ export class UserService {
   }
 
   redirectIfUserIsLoggedIn() {
-    if(window.sessionStorage.getItem('_id')){
-      console.log(window.sessionStorage.getItem('_id'));
+    if(this.checkIfUserIsLoggedIn()){
       this.router.navigate([`/profile/${window.sessionStorage.getItem('_id')}`]);
     }
   }
