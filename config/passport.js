@@ -34,16 +34,17 @@ module.exports = function(passport) {
             console.log('Weird login');
             User.findOne({ 'email' :  email }, function(err, user) {
                 // if there are any errors, return the error
-                if (err)
+                if (err) {
                     console.log(err);
-                    console.log('error')
                     
                     return done(err);
-                    console.log('No error')
+                }
                 // if no user is found, return the message
-                if (!user)
+                if (!user){
+                    console.log('No User')
                     return done(null, false, req.flash('loginMessage', 'No user found.'));
-                console.log('No User')
+                }
+                console.log(user);
                 if (!user.validPassword(password)) {
                     console.log('Invalid')
                     return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));
@@ -52,13 +53,6 @@ module.exports = function(passport) {
                     console.log('All good.')
                     return done(null, user);
                 }
-
-                    
-
-                
-
-
-                    
             });
         });
 
