@@ -50,22 +50,14 @@ module.exports = (app, passport) => {
     //Get all users
     app.get('/api/users',(req, res) => {
         User.find({}, (err, users) => {
-            var userMap = {};
-            users.forEach((user) => {
-                userMap[user._id] = user;
-            });
-            res.send(userMap);  
+            res.send(users);  
         })
     });
 
     //Get all posts
     app.get('/api/posts',(req, res) => {
         Post.find({}, (err, posts) => {
-            var postsMap = {};
-            posts.forEach((post) => {
-                postsMap[post._id] = post;
-            });
-            res.send(postsMap);  
+            res.send(posts);  
         })
     });
 

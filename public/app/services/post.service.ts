@@ -6,20 +6,22 @@ import { Http,
          RequestMethod,
          RequestOptions }     from '@angular/http';
 
-import 'rxjs/Rx';
+import { Observable }         from 'rxjs/Rx';
+
+import { Post }               from '../models/post.model';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class PostService {
+  private posts: Array<Post>;
   constructor(
     private http: Http
   ){
 
   }
   getAllPosts() {
-    this.http.get('/api/posts')
-             .map(res => res.json())
-             .subscribe((data) => {
-               console.log(data);
-             })
+    return this.http.get('/api/posts')
+              .map((res: Response) => res.json())
   }
 }
