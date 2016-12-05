@@ -52,8 +52,10 @@ app.get('/signup', (req, res) => {
 app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname + '/dist/index.html'));
 });
-// PROFILE SECTION
 app.get('/profile', isLoggedIn, function(req, res) {
+    res.sendFile(path.join(__dirname + '/dist/index.html'));
+});
+app.get('/posts', isLoggedIn, function(req, res) {
     res.sendFile(path.join(__dirname + '/dist/index.html'));
 });
 // launch ======================================================================

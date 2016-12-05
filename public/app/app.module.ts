@@ -12,7 +12,12 @@ import { LoginComponent }            from './components/login/login.component';
 import { SignupComponent }           from './components/signup/signup.component';
 import { ProfileComponent }          from './components/profile/profile.component';
 
+import { PostsComponent }            from './components/posts/posts.component';
+import { PostComponent }             from './components/post/post.component';
+
 import { UserService }               from './services/user.service';
+import { PostService }               from './services/post.service';
+
 import { routing }                   from './app.routing';
 
 @NgModule({
@@ -25,8 +30,11 @@ import { routing }                   from './app.routing';
                   HeaderComponent,
                   LoginComponent,
                   SignupComponent,
-                  ProfileComponent ],
-  providers:    [ UserService ],
+                  ProfileComponent,
+                  PostsComponent,
+                  PostComponent ],
+  providers:    [ UserService,
+                  PostService ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

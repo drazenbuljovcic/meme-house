@@ -6,7 +6,7 @@
     "clean": "rm -rf ../dist",
     "build": "npm run clean && webpack --progress",
     "build:p": "npm run clean && webpack -p --progress",
-    "serve": "webpack-dev-server --inline --progress --hot",
+    "serve": "node_modules/.bin/webpack-dev-server --inline --progress --hot",
     "test": "karma start karma.conf.js"
   },
   "dependencies": {

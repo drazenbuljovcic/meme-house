@@ -4,10 +4,12 @@ import { LoginComponent }           from './components/login/login.component';
 import { SignupComponent }          from './components/signup/signup.component';
 import { ProfileComponent }         from './components/profile/profile.component';
 
+import { PostsComponent }           from './components/posts/posts.component';
+
 const APP_ROUTES: Routes = [
   {
     path: '',
-    redirectTo: '/login',
+    redirectTo: '/posts',
     pathMatch: 'full'
   },
   {
@@ -22,6 +24,10 @@ const APP_ROUTES: Routes = [
   	path: 'profile/:id',
     component: ProfileComponent,
     pathMatch: 'full'
+  },
+  {
+  	path: 'posts',
+    component: PostsComponent
   }
 ];
 
