@@ -1,23 +1,40 @@
 div.post-container {
   display: flex;
   flex: 1;
-  width: 250px;
-  height: 600px;
-  background: grey;
+  max-width: 200px;
   justify-content: center;
-  margin: 30px;
+  margin: 25px;
+
   > div.post {
     display: flex;
     flex:1;
     flex-direction: column;
-    border: 1px solid black;
+    background: white;
+
     > img {
-      flex: 1;
-      flex-basis: 100%;
+      width: 95%;
+      margin: 10px;
+      border-radius: 10px;
+      filter: grayscale(100%);
+      transition: all .3s ease-in-out;
+      &:hover {
+        filter: grayscale(0);
+        transform: scale(1.1);
+      }
     }
     > p.post-description {
-      flex: 1;
+      padding:10px;
+      color: darkslategrey;
+    }
+  }
+}
+
+@media screen and (max-width: 560px) {
+  div.post-container {
+    max-width: 300px;
+    div.post {
       flex-basis: 100%;
+      align-self: center;
     }
   }
 }

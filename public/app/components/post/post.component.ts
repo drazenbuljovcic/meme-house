@@ -24,6 +24,9 @@ export class PostComponent {
   get post(): Post { return this._post; }
 
   ngOnInit() {
-    console.log(this._post);
+    
+  }
+  getImgUrl(post) {
+    return `api/uploads/${post.image_url}`;
   }
 }

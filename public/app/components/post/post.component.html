@@ -1,6 +1,6 @@
 <div class="post-container">
   <div class="post">
-    <img [src]="(post.image_url)" alt="Meme House">
+    <img [src]="getImgUrl(post)" alt="Meme House">
     <p class="post-description">
       {{ post.description }}
     </p>
