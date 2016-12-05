@@ -34,6 +34,7 @@ module.exports = (app, passport) => {
             res.json(user);
         });
     });
+
     //Delete user by id
     app.delete('/api/user/:userid',(req, res) => {
         User.findByIdAndRemove(req.params.userid, (err, results)=> {
@@ -47,6 +48,7 @@ module.exports = (app, passport) => {
             }
         })        
     });
+
     //Get all users
     app.get('/api/users',(req, res) => {
         User.find({}, (err, users) => {
@@ -60,6 +62,71 @@ module.exports = (app, passport) => {
             res.send(posts);  
         })
     });
+
+    //Get post by id
+    app.get('/api/posts/:post_id',(req,res) => {
+        Post.findById(req.params.post_id, (err,post) => {
+            if (err) {
+                console.log(err);
+                return
+            }
+            res.json(post);
+        });
+    });
+
+    //Update post by id
+
+    app.put('/api/posts/:post_id',(req, res) => { 
+        let id = req.params.post_id;
+        Post.findById(id, (err,post) => {
+            if (err) {
+                return res.send(500, { error: err });
+            }
+            if (!post) {
+                return res.send(404);
+            }
+            let currentValue = post.hearts || 0;
+            if (!req.user) {
+                    res.json("You are not logged in.")
+                    return
+            }
+            User.findById(req.user._id, (err, user) => {
+
+                if (err) {
+                    res.json(err);
+                    return
+                }
+                var voted_by_user = user.voted_posts || [];
+                var userVote = 1;
+                for (var i = 0; i < voted_by_user.length; i++) {
+                    if (voted_by_user[i] == id) {
+                        // User already gave a hearth.
+                        userVote = -1
+                        delete voted_by_user[i];
+                    }
+                }
+                if (userVote == 1) {
+                    voted_by_user.push(id);
+                } else {
+                    // Already deleted the post id from user's voted objects.
+                }
+                user.voted_posts = voted_by_user;
+                post.hearts += userVote;
+                user.save((err) => {
+                    if (err) {
+                        return
+                    }
+                })
+                post.save((err) => {
+                    if(err) {
+                        res.json(err);
+                    } else {
+                        res.json(post);
+                    }
+                });
+            })
+        })
+    })
 
     //Delete Post by id
     app.delete('/api/posts/:post_id',(req, res) => {

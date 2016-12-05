@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var postSchema = mongoose.Schema({
         title        : String,
         description  : String,
-        votes 		 : Number,
+        hearts 		 : Number,
         views		 : Number,
         Saved		 : Boolean,
         image_url 	 : String,
