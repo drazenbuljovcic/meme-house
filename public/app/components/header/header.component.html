@@ -1,6 +1,6 @@
-<nav class="grey lighten-2">
+<nav class="main-navigation">
   <div class="nav-wrapper">
-    <a href="#!" class="brand-logo">Logo</a>
+    <a [routerLink]="['/']" class="brand-logo"><i class="large material-icons">library_books</i></a>
     <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
     <ul class="right hide-on-med-and-down">
       <li *ngIf="userService.checkIfUserIsLoggedIn()"><a href="" (click)="userService.logoutUser()">Logout</a></li>

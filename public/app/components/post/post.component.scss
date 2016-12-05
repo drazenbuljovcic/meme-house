@@ -3,16 +3,17 @@ div.post-container {
   flex: 1;
   max-width: 200px;
   justify-content: center;
-  margin: 25px;
+  margin: 25px 10px;
 
   > div.post {
     display: flex;
     flex:1;
     flex-direction: column;
-    background: white;
+    background: #D4DFE6;
+    border-radius: 15px;
 
     > img {
-      width: 95%;
+      width: 90%;
       margin: 10px;
       border-radius: 10px;
       filter: grayscale(100%);
