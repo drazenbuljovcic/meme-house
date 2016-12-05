@@ -75,7 +75,6 @@ module.exports = (app, passport) => {
     });
 
     //Update post by id
-
     app.put('/api/posts/:post_id',(req, res) => { 
         let id = req.params.post_id;
         Post.findById(id, (err,post) => {
@@ -103,6 +102,10 @@ module.exports = (app, passport) => {
                         // User already gave a hearth.
                         userVote = -1
                         delete voted_by_user[i];
+                        // Ako ovde koristimo splice, iz nekog razloga svaki put bude -1, nisam skontao, ovako radi kako treba, 
+                        //ali ostavalja index. Umoran sam. Radi ovo dobro ali sutra/danas jer je sad prošlo 12, ovo da optimizujemo, 
+                        // ne ostavlja iza sebe null polja (nije problem, ali bezveze ja da ostavlja.)
+                        //Video sam workarround, ne sviđa mi se baš, tako da videćemo ovo zajedno sutra. ;)
                     }
                 }
                 if (userVote == 1) {
@@ -111,6 +114,7 @@ module.exports = (app, passport) => {
                     // Already deleted the post id from user's voted objects.
                 }
                 user.voted_posts = voted_by_user;
+
                 post.hearts += userVote;
                 user.save((err) => {
                     if (err) {
