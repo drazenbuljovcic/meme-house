@@ -37,7 +37,7 @@ module.exports = (app, passport) => {
             if (user) {
                 res.json(user);
             } else {
-                res.json({"error": "User doesn't exist."}}); 
+                res.json({"error": "User doesn't exist."}); 
             }
         });
     });
@@ -95,7 +95,6 @@ module.exports = (app, passport) => {
             } else {
                 res.json({"error":"Post doesn't exist."});
             }
-            
         });
     });
 
@@ -185,7 +184,7 @@ module.exports = (app, passport) => {
         let body = req.body;
         var post = new Post();
         if (!body.title) {
-            res.json("error":"Post must have a title.")
+            res.json({"error":"Post must have a title."})
             return
         }
         post.title = body.title;
@@ -219,7 +218,7 @@ module.exports = (app, passport) => {
             }
             res.contentType(doc.img.contentType);
             res.send(doc.img.data);   
-            });
+         });
     })
 };
 
