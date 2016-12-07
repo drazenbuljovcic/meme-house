@@ -31,7 +31,14 @@ module.exports = (app, passport) => {
     //Get user by id
     app.get('/api/user/:userid', (req,res) => {
         User.findById(req.params.userid, (err, user) => {
-            res.json(user);
+            if (err) {
+                return
+            }
+            if (user) {
+                res.json(user);
+            } else {
+                res.json({"error": "User doesn't exist."}}); 
+            }
         });
     });
 
@@ -40,6 +47,7 @@ module.exports = (app, passport) => {
         User.findByIdAndRemove(req.params.userid, (err, results)=> {
             if (err) {
                 res.json({"error":err})
+                return
             } if (results)  {
                 res.json({"Deleted user":results})
             } else {
@@ -82,7 +90,12 @@ module.exports = (app, passport) => {
                 console.log(err);
                 return
             }
-            res.json(post);
+            if (post) {
+                res.json(post);
+            } else {
+                res.json({"error":"Post doesn't exist."});
+            }
+            
         });
     });
 
@@ -171,6 +184,10 @@ module.exports = (app, passport) => {
 
         let body = req.body;
         var post = new Post();
+        if (!body.title) {
+            res.json("error":"Post must have a title.")
+            return
+        }
         post.title = body.title;
         post.description = body.description;
         post.image_url = req.file.path;
@@ -197,9 +214,11 @@ module.exports = (app, passport) => {
     //Get a single post image
     app.get('/api/uploads/:post_id', (req,res) => {
         PostImage.findById(req.params.post_id, (err, doc) => {
-            if (err) return 
-                res.contentType(doc.img.contentType);
-                res.send(doc.img.data);   
+            if (err) {
+                return 
+            }
+            res.contentType(doc.img.contentType);
+            res.send(doc.img.data);   
             });
     })
 };
