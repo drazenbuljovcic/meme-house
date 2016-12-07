@@ -52,14 +52,26 @@ module.exports = (app, passport) => {
     //Get all users
     app.get('/api/users',(req, res) => {
         User.find({}, (err, users) => {
-            res.send(users);  
-        })
+            res.send(users); 
+        });
     });
 
     //Get all posts
     app.get('/api/posts',(req, res) => {
         Post.find({}, (err, posts) => {
             res.send(posts);  
+        });
+    });
+
+    //Search for post by querty
+    app.post('/api/posts/:search_value',(req,res) => {
+        let value = req.params.search_value;
+        let regxp = {$regex: new RegExp("^" + value.toLowerCase(), "i") };
+        Post.find({ 'title': regxp }, (err,posts) =>{
+            if (err) {
+                return
+            }
+            res.json(posts);
         })
     });
 
