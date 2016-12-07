@@ -32,6 +32,7 @@ module.exports = (app, passport) => {
     app.get('/api/user/:userid', (req,res) => {
         User.findById(req.params.userid, (err, user) => {
             if (err) {
+                res.json({"error":"User doesn't exist."})
                 return
             }
             if (user) {
@@ -87,7 +88,7 @@ module.exports = (app, passport) => {
     app.get('/api/posts/:post_id',(req,res) => {
         Post.findById(req.params.post_id, (err,post) => {
             if (err) {
-                console.log(err);
+                res.json({"error":"Post doesn't exist."});
                 return
             }
             if (post) {
