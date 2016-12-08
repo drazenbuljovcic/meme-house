@@ -3,6 +3,9 @@ import { BrowserModule }             from '@angular/platform-browser';
 import { HttpModule }                from '@angular/http';
 import { FormsModule, 
           ReactiveFormsModule }      from '@angular/forms';
+          
+import { MasonryModule }             from 'angular2-masonry';
+
 
 import { AppComponent }              from './components/app/app.component';
 
@@ -26,6 +29,7 @@ import { routing }                   from './app.routing';
                   HttpModule,
                   FormsModule,
                   ReactiveFormsModule,
+                  MasonryModule,
                   routing ],
   declarations: [ AppComponent,
                   HeaderComponent,
