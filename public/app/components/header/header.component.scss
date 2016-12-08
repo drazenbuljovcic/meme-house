@@ -1,5 +1,5 @@
 nav.main-navigation {
-  background: #A593E0;
+  background: #f7f6f4;
   height: 80px;
   > div.nav-wrapper {
     display: flex;
@@ -33,11 +33,17 @@ nav.main-navigation {
 }
 .brand-logo {
 	padding-left: 80px;
+  color:black;
 }
-
+li {
+  a {
+    color: #000000;
+  }
+  
+}
 li.active {
   background-color: initial;
-  border-top: 3px white solid;
+  border-top: 3px black solid;
 }
 
 @media (max-width: 992px) {

@@ -7,7 +7,7 @@ form {
     display: flex;
     max-width: 600px;
     flex: 1;
-    border: 1px solid white;
+    border: 1px solid black;
     border-radius: 15px;
     align-self: center;
 
@@ -26,8 +26,9 @@ form {
       height: 35px;
       align-self: center;
       margin-right: 25px;
+      color: black;
       background: transparent;
-      border: 2px solid white;
+      border: 2px solid black;
       border-radius: 50%;
       position: relative;
 

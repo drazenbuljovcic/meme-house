@@ -11,6 +11,7 @@ div.posts-container {
   column-count: 4;
   column-gap:0px;
 }
+
 @media screen and (max-width: 560px) {
   div.posts-container {
     justify-content: center;
