@@ -1,14 +1,14 @@
 div.post-container {
-  display: flex;
-  flex: 1;
+  // display: flex;
+  // flex: 1;
   max-width: 200px;
-  justify-content: center;
+  // justify-content: center;
   margin: 25px 10px;
 
   > div.post {
-    display: flex;
-    flex:1;
-    flex-direction: column;
+    // display: flex;
+    // flex:1;
+    // flex-direction: column;
     background: #FFFFFF;
     // border-radius: 15px;
 
@@ -30,12 +30,12 @@ div.post-container {
   }
 }
 
-@media screen and (max-width: 560px) {
-  div.post-container {
-    max-width: 300px;
-    div.post {
-      flex-basis: 100%;
-      align-self: center;
-    }
-  }
-}
+// @media screen and (max-width: 560px) {
+//   div.post-container {
+//     max-width: 300px;
+//     div.post {
+//       flex-basis: 100%;
+//       align-self: center;
+//     }
+//   }
+// }

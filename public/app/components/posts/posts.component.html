@@ -1,4 +1,4 @@
 <div class="posts-container">
-  <post *ngFor="let post of posts"
+  <post class="grid-item" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 200 }' *ngFor="let post of posts"
         [post]="post"></post>
 </div>
