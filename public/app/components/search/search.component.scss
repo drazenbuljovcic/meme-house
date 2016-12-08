@@ -7,8 +7,7 @@ form {
     display: flex;
     max-width: 600px;
     flex: 1;
-    border: 1px solid black;
-    border-radius: 15px;
+    border-bottom: 1px solid black;
     align-self: center;
 
     > input[name=search] {
@@ -19,6 +18,7 @@ form {
       border: none !important;
       box-shadow: none !important;
       align-self: center;
+      color: black;
     }
 
     > button[type=submit] {
@@ -28,13 +28,13 @@ form {
       margin-right: 25px;
       color: black;
       background: transparent;
-      border: 2px solid black;
-      border-radius: 50%;
+      border: 2px solid transparent;
+      border-radius: 50%; 
       position: relative;
 
       &:before {
         font-family: FontAwesome;
-        content: '\f061';
+        content: '\f002';
         position: absolute;
         top: -17px;
         left: 7px;

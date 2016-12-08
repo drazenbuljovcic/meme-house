@@ -1,6 +1,6 @@
 nav.main-navigation {
   background: #f7f6f4;
-  height: 80px;
+  // height: 80px;
   > div.nav-wrapper {
     display: flex;
     flex-direction: row;
@@ -8,8 +8,7 @@ nav.main-navigation {
       flex: 1;
       max-width: 200px;
       > a {
-        padding: 20px;
-        padding-left: 40px;
+        padding: 10px 40px;
         > i {
           font-size: 40px;
         }
