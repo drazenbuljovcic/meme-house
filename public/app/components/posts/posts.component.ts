@@ -1,4 +1,5 @@
 import { Component, OnInit }  from '@angular/core';
+import { Router, ActivatedRoute, Params, Data } from '@angular/router';
 
 import { PostService }        from '../../services/post.service';
 
@@ -13,12 +14,18 @@ export class PostsComponent {
   posts: Array<Post>;
   
   constructor(
-    private postService: PostService
+    private postService: PostService,
+    private route: ActivatedRoute,
+    private router: Router
   ) {
 
   }
 
   ngOnInit() {
-    this.postService.getAllPosts().subscribe(res => this.posts = res);
+    if(this.route.snapshot.params['term']) {
+      this.postService.search(this.route.snapshot.params['term']).subscribe(res => this.posts = res);
+    } else {
+      this.postService.getAllPosts().subscribe(res => this.posts = res);
+    }
   }
 }

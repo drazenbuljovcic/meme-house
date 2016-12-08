@@ -1,0 +1,43 @@
+form {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  > div.input-wrapper {
+    height: 50px;
+    display: flex;
+    max-width: 600px;
+    flex: 1;
+    border: 1px solid white;
+    border-radius: 15px;
+    align-self: center;
+
+    > input[name=search] {
+      flex: 1;
+      height: 40px;
+      margin: 0;
+      padding: 10px;
+      border: none !important;
+      box-shadow: none !important;
+      align-self: center;
+    }
+
+    > button[type=submit] {
+      width: 35px;
+      height: 35px;
+      align-self: center;
+      margin-right: 25px;
+      background: transparent;
+      border: 2px solid white;
+      border-radius: 50%;
+      position: relative;
+
+      &:before {
+        font-family: FontAwesome;
+        content: '\f061';
+        position: absolute;
+        top: -17px;
+        left: 7px;
+      }
+    }
+  }
+}

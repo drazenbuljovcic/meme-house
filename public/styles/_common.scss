@@ -19,3 +19,8 @@ textarea.materialize-textarea:focus:not([readonly]) + label {
   color: $input-color;
 }
 
+nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
+  height: auto !important;
+  line-height: 1;
+  margin: 0 !important;
+}

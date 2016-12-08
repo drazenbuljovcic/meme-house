@@ -1,9 +1,16 @@
 <nav class="main-navigation">
   <div class="nav-wrapper">
-    <a [routerLink]="['/']" class="brand-logo"><i class="large material-icons">library_books</i></a>
-    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+    <div class="logo-wrapper">
+      <a [routerLink]="['/']" class="brand-logo"><i class="large material-icons">library_books</i></a>
+    </div>
+    <div class="search-wrapper">
+      <search></search>
+    </div>
+    <div class="hamburger-menu">
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
     <ul class="right hide-on-med-and-down">
-      <li *ngIf="userService.checkIfUserIsLoggedIn()"><a href="" (click)="userService.logoutUser()">Logout</a></li>
+      <li *ngIf="userService.checkIfUserIsLoggedIn()"><a (click)="userService.logoutUser()">Logout</a></li>
       <li routerLinkActive="active"><a [routerLink]="['/posts']">Posts</a></li>
       <li *ngIf="!userService.checkIfUserIsLoggedIn()" routerLinkActive="active"><a [routerLink]="['/login']">Login</a></li>
       <li *ngIf="!userService.checkIfUserIsLoggedIn()" routerLinkActive="active"><a [routerLink]="['/signup']">Signup</a></li>

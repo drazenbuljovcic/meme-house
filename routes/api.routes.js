@@ -73,7 +73,7 @@ module.exports = (app, passport) => {
     });
 
     //Search for post by querty
-    app.post('/api/posts/:search_value',(req,res) => {
+    app.get('/api/search/:search_value',(req,res) => {
         let value = req.params.search_value;
         let regxp = {$regex: new RegExp("^" + value.toLowerCase(), "i") };
         Post.find({ 'title': regxp }, (err,posts) =>{

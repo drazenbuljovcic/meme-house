@@ -1,0 +1,9 @@
+<form class="search-component"
+      [formGroup]="searchForm"
+      (submit)="redirectToSearch(searchForm.value)">
+  <div class="input-wrapper">
+    <input type="text" name="search" placeholder="Search"
+           [formControl]="searchForm.controls['term']">
+    <button type="submit"></button>
+  </div>
+</form>

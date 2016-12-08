@@ -29,7 +29,6 @@ module.exports = {
         loader: 'ts'
       },
       {
-        
         test: /\.scss$/,
         exclude: /styles/,        
         loaders: ['to-string', 'css', 'sass']

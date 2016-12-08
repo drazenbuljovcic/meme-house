@@ -14,6 +14,7 @@ import { ProfileComponent }          from './components/profile/profile.componen
 
 import { PostsComponent }            from './components/posts/posts.component';
 import { PostComponent }             from './components/post/post.component';
+import { SearchComponent }           from './components/search/search.component';
 
 import { UserService }               from './services/user.service';
 import { PostService }               from './services/post.service';
@@ -32,7 +33,8 @@ import { routing }                   from './app.routing';
                   SignupComponent,
                   ProfileComponent,
                   PostsComponent,
-                  PostComponent ],
+                  PostComponent,
+                  SearchComponent ],
   providers:    [ UserService,
                   PostService ],
   bootstrap:    [ AppComponent ]

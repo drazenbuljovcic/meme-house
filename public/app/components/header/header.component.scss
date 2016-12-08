@@ -1,11 +1,61 @@
 nav.main-navigation {
   background: #A593E0;
+  height: 80px;
+  > div.nav-wrapper {
+    display: flex;
+    flex-direction: row;
+    > div.logo-wrapper {
+      flex: 1;
+      max-width: 200px;
+      > a {
+        padding: 20px;
+        padding-left: 40px;
+        > i {
+          font-size: 40px;
+        }
+      }
+    }
+    > div.search-wrapper {
+      flex: 1;
+    }
+    > div.hamburger-menu {
+      flex: 1;
+      display: none;
+      > a {
+        padding: 20px;
+        padding-left: 40px;
+        > i {
+          font-size: 40px;
+        }
+      }
+    }
+  }
 }
 .brand-logo {
 	padding-left: 80px;
 }
+
+li.active {
+  background-color: initial;
+  border-top: 3px white solid;
+}
+
 @media (max-width: 992px) {
-	.brand-logo {
-		padding-left: 0;
-	}
+  div.logo-wrapper {
+    position: relative;
+    max-width: 100px !important;
+    a.brand-logo {
+      position: relative;
+      display: inline-block;
+      padding: 10px;
+      padding-left: 40px;
+         
+    }
+  }
+  div.hamburger-menu {
+    flex: 1;
+    justify-content: center;
+    display: inline-block !important;
+    max-width: 100px;
+  }
 }
