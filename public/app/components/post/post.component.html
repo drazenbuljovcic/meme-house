@@ -1,8 +1,20 @@
 <div class="post-container">
   <div class="post">
+
     <img [src]="getImgUrl(post)" alt="Meme House">
+ 	<i class="fa fa-user-circle fa-stack-2x"></i>
+    <p class="post-title">
+      {{ post.title }}
+    </p>
     <p class="post-description">
       {{ post.description }}
     </p>
+    
+    <button type="submit"> 	
+    	<span class="fa-stack fa-lg">
+ 			<i class="fa fa-circle fa-stack-2x"></i>
+  			<i class="fa fa-heart fa-stack-1x fa-inverse"></i>
+  		</span>
+    </button>
   </div>
 </div>

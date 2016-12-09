@@ -14,18 +14,56 @@ div.post-container {
 
     > img {
       width: 100%;
+      // position:relative;
       // margin: 10px;
-      // border-radius: 10px;
-      // filter: grayscale(100%);
-      // transition: all .3s ease-in-out;
-      &:hover {
-        // filter: grayscale(0);
-        // transform: scale(1.1);
+    }
+    > button[type=submit] {
+      width: 35px;
+      height: 35px;
+      align-self: center;
+      top:40px;
+      right:40px;
+      background: transparent;
+      border: 2px solid transparent;
+      border-radius: 50%; 
+      position: absolute;
+      z-index: 5;
+      opacity: 0.5;
+      .fa-stack {
+        right:6px;
+       }
+      .fa-heart {
+        color:gray;
       }
+      .fa-circle {
+        color:white;
+      }
+      &:hover {
+        opacity: 1; 
+        .fa-heart {
+          color:red;
+        } 
+      }
+    } 
+    .fa-user-circle {
+      bottom:36px;
+      left:14px;
+      width:40px;
+      height:40px;
+      position: absolute;
+    }
+    > p {
+      padding-left: 50px;
+    }
+    > p.post-title {
+      color: #333333;
+      padding-top: 16px;
+
     }
     > p.post-description {
-      padding: 16px 10px;
       color: #d9d9d9;
+      padding-top: 8px;
+      padding-bottom:16px;
     }
   }
 }
