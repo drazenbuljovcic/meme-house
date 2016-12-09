@@ -14,10 +14,12 @@ import { HeaderComponent }           from './components/header/header.component'
 import { LoginComponent }            from './components/login/login.component';
 import { SignupComponent }           from './components/signup/signup.component';
 import { ProfileComponent }          from './components/profile/profile.component';
+import { CreateComponent }           from './components/create/create.component';
 
 import { PostsComponent }            from './components/posts/posts.component';
 import { PostComponent }             from './components/post/post.component';
 import { SearchComponent }           from './components/search/search.component';
+
 
 import { UserService }               from './services/user.service';
 import { PostService }               from './services/post.service';
@@ -36,6 +38,7 @@ import { routing }                   from './app.routing';
                   LoginComponent,
                   SignupComponent,
                   ProfileComponent,
+                  CreateComponent,
                   PostsComponent,
                   PostComponent,
                   SearchComponent ],

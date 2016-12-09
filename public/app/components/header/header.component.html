@@ -10,14 +10,18 @@
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
     <ul class="right hide-on-med-and-down">
-      <li *ngIf="userService.checkIfUserIsLoggedIn()"><a (click)="userService.logoutUser()">Logout</a></li>
+      <li *ngIf="userService.checkIfUserIsLoggedIn()" routerLinkActive="active"><a [routerLink]="['/create']">Create a meme</a></li>
       <li routerLinkActive="active"><a [routerLink]="['/posts']">Posts</a></li>
+      <li *ngIf="userService.checkIfUserIsLoggedIn()" routerLinkActive="active"><a [routerLink]="['/profile']">Profile</a></li>
+      <li *ngIf="userService.checkIfUserIsLoggedIn()"><a (click)="userService.logoutUser()">Logout</a></li>
       <li *ngIf="!userService.checkIfUserIsLoggedIn()" routerLinkActive="active"><a [routerLink]="['/login']">Login</a></li>
       <li *ngIf="!userService.checkIfUserIsLoggedIn()" routerLinkActive="active"><a [routerLink]="['/signup']">Signup</a></li>
     </ul>
     <ul class="side-nav" id="mobile-demo">
-      <li *ngIf="userService.checkIfUserIsLoggedIn()"><a (click)="userService.logoutUser()">Logout</a></li>
+      <li *ngIf="userService.checkIfUserIsLoggedIn()" routerLinkActive="active"><a [routerLink]="['/create']">Create a meme</a></li>
       <li routerLinkActive="active"><a [routerLink]="['/posts']">Posts</a></li>
+      <li *ngIf="userService.checkIfUserIsLoggedIn()" routerLinkActive="active"><a [routerLink]="['/profile']">Profile</a></li>
+      <li *ngIf="userService.checkIfUserIsLoggedIn()"><a (click)="userService.logoutUser()">Logout</a></li>
       <li *ngIf="!userService.checkIfUserIsLoggedIn()" routerLinkActive="active"><a [routerLink]="['/login']">Login</a></li>
       <li *ngIf="!userService.checkIfUserIsLoggedIn()" routerLinkActive="active"><a [routerLink]="['/signup']">Signup</a></li>
     </ul>

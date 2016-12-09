@@ -58,6 +58,9 @@ app.get('/profile', isLoggedIn, function(req, res) {
 app.get('/posts', isLoggedIn, function(req, res) {
     res.sendFile(path.join(__dirname + '/dist/index.html'));
 });
+app.get('/create', isLoggedIn, function(req, res) {
+    res.sendFile(path.join(__dirname + '/dist/index.html'));
+});
 // launch ======================================================================
 app.listen(port);
 console.log('The magic happens on port ' + port);
