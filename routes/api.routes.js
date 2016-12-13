@@ -99,6 +99,46 @@ module.exports = (app, passport) => {
         });
     });
 
+    //Comment post
+    app.put('/api/posts/:post_id/comment', (req,res) => {
+        let id = req.params.post_id;
+        let comment = req.body.comment;
+        if (!comment) {
+            res.json( {"error": "You have to enter a comment."} );
+            return
+        }
+        Post.findById(id,(err,post) => {
+            if (err) {
+                return res.send(500, {error: err});
+            }
+            if (!post) {
+                return res.send(404);
+            };
+            if (!post.comments) {
+                post.comments = [];
+                post.save((err) => {
+                    if(err) {
+                        res.json(err);
+                    } else {
+                        // res.json(post);
+                    }
+                });
+            }
+            Post.update({_id: id },
+                {$push: { 'comments' : comment } },{upsert:true}, function(err, data) { 
+                    if (err) {
+                        return res.send(500, {error: err});
+                    }
+                    Post.findById(id,(err,post) => {
+                    if (err) {
+                        return res.send(500, {error: err});
+                    } else {
+                        return res.json(post);
+                    }
+                })
+            });
+        })
+    });
     //Update post by id
     app.put('/api/posts/:post_id',(req, res) => { 
         let id = req.params.post_id;

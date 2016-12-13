@@ -8,6 +8,7 @@ var postSchema = mongoose.Schema({
         views		 : Number,
         Saved		 : Boolean,
         image_url 	 : String,
+        comments	 : { type:Array },
 });
 
 
