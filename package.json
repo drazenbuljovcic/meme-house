@@ -6,7 +6,7 @@
   "scripts": {
     "postinstall": "cd public && npm install && npm run build:p && cd ../",
     "start": "node app.js",
-    "local": "cd public && npm run build && cd ../ && nodemon"
+    "local": "cd public && npm run build && cd ../ && node app.js"
   },
   "repository": {
     "type": "git",

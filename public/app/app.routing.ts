@@ -14,7 +14,8 @@ const APP_ROUTES: Routes = [
   {	path: 'profile/:id', component: ProfileComponent, pathMatch: 'full' },
   {	path: 'posts', component: PostsComponent },
   {	path: 'create', component: CreateComponent },
-  {	path: 'search/:term', component: PostsComponent },
+  {	path: 'search', component: PostsComponent },
+  {	path: 'search/:term', component: PostsComponent, pathMatch: 'full' },
 ];
 
 export const routing = RouterModule.forRoot(APP_ROUTES);

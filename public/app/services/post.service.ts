@@ -33,10 +33,18 @@ export class PostService {
   }
 
   redirectToSearch(term) {
-    this.router.navigate([`search/${term}`]);
+    if(!term) {
+      this.router.navigate([`search`]); return ;
+    }
+    this.router.navigate([`search/${term}`]); return ;
   }
 
   search(term) {
+    if(!term) {
+      return this.http.get(`/api/search`)
+                      .map(res => res.json());
+    }
+    
     return this.http.get(`/api/search/${term}`)
                     .map(res => res.json());
   }

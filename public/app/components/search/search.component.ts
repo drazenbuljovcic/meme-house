@@ -16,11 +16,12 @@ export class SearchComponent {
     private postService: PostService
   ) {
     this.searchForm = this.formBuilder.group({
-      'term': null
+      'term': ''
     })
   }
   
   redirectToSearch(term) {
     this.postService.redirectToSearch(term.term);
+    this.searchForm.reset();
   }
 }

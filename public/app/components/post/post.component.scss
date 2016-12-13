@@ -67,16 +67,6 @@ div.post-container {
     }
   }
 }
-
-// @media screen and (max-width: 560px) {
-//   div.post-container {
-//     max-width: 300px;
-//     div.post {
-//       flex-basis: 100%;
-//       align-self: center;
-//     }
-//   }
-// }
 div.post-container.overlay-active + div.overlay {
   overflow: auto;
 }
@@ -85,8 +75,10 @@ div.overlay {
   height: 100%;
   background: rgba(0, 0, 0, .6);
   position: fixed;
+  display: -webkit-flex; /* Safari */
   display: flex;
   justify-content: center;
+  -webkit-justify-content: center; /* Safari 6.1+ */
   overflow: hidden;
   top: 0;
   bottom: 0;

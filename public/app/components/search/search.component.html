@@ -2,7 +2,7 @@
       [formGroup]="searchForm"
       (submit)="redirectToSearch(searchForm.value)">
   <div class="input-wrapper">
-    <input type="text" name="search" placeholder="Search"
+    <input type="text" name="search" value="" placeholder="Search"
            [formControl]="searchForm.controls['term']">
     <button type="submit"></button>
   </div>

@@ -26,11 +26,13 @@ export class PostsComponent {
   }
 
   ngOnInit() {
-    if(this.route.snapshot.params['term']) {
-      this.postService.search(this.route.snapshot.params['term']).subscribe(res => this.posts = res);
-    } else {
-      this.postService.getAllPosts().subscribe(res => this.posts = res);
-      console.log(this.posts);
-    }
+    this.route.params.subscribe(params => {
+      const term = params['term'];
+      if(term) {
+        this.postService.search(term).subscribe(res => this.posts = res);
+      } else {
+        this.postService.getAllPosts().subscribe(res => this.posts = res);
+      }
+    });
   }
 }
