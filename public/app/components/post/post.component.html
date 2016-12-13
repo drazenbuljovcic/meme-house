@@ -1,7 +1,7 @@
 <div class="post-container">
-  <div class="post">
+  <div class="post" >
 
-    <img [src]="getImgUrl(post)" alt="Meme House">
+  <img [src]="getImgUrl(post)" (click)="fullScreenImage($event)" alt="Meme House">
  	<i class="fa fa-user-circle fa-stack-2x"></i>
     <p class="post-title">
       {{ post.title }}
@@ -17,4 +17,7 @@
   		</span>
     </button>
   </div>
+</div>
+<div class="overlay" (click)="hideOverlay()" *ngIf="selectedImageSrc">
+  <img [src]="(selectedImageSrc)">
 </div>
