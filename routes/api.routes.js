@@ -72,7 +72,17 @@ module.exports = (app, passport) => {
         });
     });
 
-    //Search for post by querty
+    
+    app.get('/api/search/',(req,res) => {
+        Post.find({}, (err, posts) => {
+            if (err) {
+                return res.send(500, {error: err});
+            }
+            return res.send(posts);  
+        });
+    });
+
+    //Search for post by query
     app.get('/api/search/:search_value',(req,res) => {
         let value = req.params.search_value;
         let regxp = {$regex: new RegExp("^" + value.toLowerCase(), "i") };
@@ -137,7 +147,7 @@ module.exports = (app, passport) => {
                     }
                 })
             });
-        })
+        });
     });
     //Update post by id
     app.put('/api/posts/:post_id',(req, res) => { 
