@@ -85,7 +85,8 @@ module.exports = (app, passport) => {
     //Search for post by query
     app.get('/api/search/:search_value',(req,res) => {
         let value = req.params.search_value;
-        let regxp = {$regex: new RegExp("^" + value.toLowerCase(), "i") };
+        let regxp = {$regex: new RegExp("^" + ".*" + value.toLowerCase() + "*.", "i") };
+        console.log(regxp);
         Post.find({ 'title': regxp }, (err,posts) =>{
             if (err) {
                 return
